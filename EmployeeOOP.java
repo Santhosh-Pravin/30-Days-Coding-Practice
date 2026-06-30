@@ -1,38 +1,26 @@
 class Employee {
-    private String name;
-    private double salary;
-
-    public Employee(String name, double salary) {
+    String name;
+    int id;
+    double salary;
+    Employee(String name, int id, double salary) {
         this.name = name;
+        this.id = id;
         this.salary = salary;
     }
-
-    public double getSalary() {
-        return salary;
-    }
-
-    public String getName() {
-        return name;
+    void displayDetails() {
+        System.out.println("Employee Name: " + name);
+        System.out.println("Employee ID: " + id);
+        System.out.println("Employee Salary: $" + salary);
+        System.out.println();
     }
 }
-
 public class EmployeeOOP {
     public static void main(String[] args) {
-        Employee[] employees = {
-            new Employee("Alice", 45000),
-            new Employee("Bob", 56000),
-            new Employee("Charlie", 75000),
-            new Employee("Diana", 61000)
-        };
-
-        Employee highest = employees[0];
-
-        for (int i = 1; i < employees.length; i++) {
-            if (employees[i].getSalary() > highest.getSalary()) {
-                highest = employees[i];
-            }
-        }
-
-        System.out.println("Highest paid employee: " + highest.getName() + " with salary ₹" + highest.getSalary());
+        Employee emp1 = new Employee("Atulya", 101, 50000);
+        Employee emp2 = new Employee("Coolie", 102, 60000);
+        System.out.println("Details of Employee 1:");
+        emp1.displayDetails();
+        System.out.println("Details of Employee 2:");
+        emp2.displayDetails();
     }
 }
