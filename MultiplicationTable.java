@@ -1,16 +1,15 @@
 import java.util.Scanner;
-
-class MultiplicationTable {
-    public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
-        
-        System.out.print("Enter a number: ");
-        int number = input.nextInt();
-
-        for (int i = 6; i <= 9; i++) {
-            System.out.println(number + " * " + i + " = " + (number * i));
+class MultiplicationTable{
+    public static void main(String[] args){
+        Scanner input=new Scanner(System.in);
+        System.out.println("Enter a number for Multiplication Table");
+        int n=input.nextInt();
+        int[] table=new int[10];
+        for (int i=1;i<=10;i++){
+            table[i-1]=i*n;
         }
-
-        input.close();
+        for(int j=1;j<=10;j++){
+            System.out.println(n+"*"+j+"="+table[j-1]);
+        }
     }
 }
