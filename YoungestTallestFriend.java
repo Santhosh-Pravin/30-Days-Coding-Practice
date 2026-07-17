@@ -1,45 +1,39 @@
 import java.util.Scanner;
 
-class YoungestTallestFriend {
+public class YoungestTallestFriend {
+    public static String findYoungest(String[] names, int[] ages) {
+        int minIndex = 0;
+        for (int i = 1; i < ages.length; i++) {
+            if (ages[i] < ages[minIndex]) {
+                minIndex = i;
+            }
+        }
+        return names[minIndex];
+    }
+    
+    public static String findTallest(String[] names, double[] heights) {
+        int maxIndex = 0;
+        for (int i = 1; i < heights.length; i++) {
+            if (heights[i] > heights[maxIndex]) {
+                maxIndex = i;
+            }
+        }
+        return names[maxIndex];
+    }
+    
     public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
-
-        // Input for ages
-        System.out.print("Enter Amar's age: ");
-        int amarAge = input.nextInt();
-        System.out.print("Enter Akbar's age: ");
-        int akbarAge = input.nextInt();
-        System.out.print("Enter Anthony's age: ");
-        int anthonyAge = input.nextInt();
-
-        // Input for heights
-        System.out.print("Enter Amar's height: ");
-        double amarHeight = input.nextDouble();
-        System.out.print("Enter Akbar's height: ");
-        double akbarHeight = input.nextDouble();
-        System.out.print("Enter Anthony's height: ");
-        double anthonyHeight = input.nextDouble();
-
-        // Find youngest friend
-        int youngestAge = Math.min(amarAge, Math.min(akbarAge, anthonyAge));
-        if (youngestAge == amarAge) {
-            System.out.println("Amar is the youngest.");
-        } else if (youngestAge == akbarAge) {
-            System.out.println("Akbar is the youngest.");
-        } else {
-            System.out.println("Anthony is the youngest.");
+        Scanner scanner = new Scanner(System.in);
+        String[] names = {"Amar", "Akbar", "Anthony"};
+        int[] ages = new int[3];
+        double[] heights = new double[3];
+        for (int i = 0; i < 3; i++) {
+            System.out.print("Enter age of " + names[i] + ": ");
+            ages[i] = scanner.nextInt();
+            System.out.print("Enter height of " + names[i] + " in cm: ");
+            heights[i] = scanner.nextDouble();
         }
-
-        // Find tallest friend
-        double tallestHeight = Math.max(amarHeight, Math.max(akbarHeight, anthonyHeight));
-        if (tallestHeight == amarHeight) {
-            System.out.println("Amar is the tallest.");
-        } else if (tallestHeight == akbarHeight) {
-            System.out.println("Akbar is the tallest.");
-        } else {
-            System.out.println("Anthony is the tallest.");
-        }
-
-        input.close();
+        System.out.println("Youngest friend: " + findYoungest(names, ages));
+        System.out.println("Tallest friend: " + findTallest(names, heights));
+        scanner.close();
     }
 }
