@@ -1,21 +1,24 @@
 import java.util.Scanner;
 
-class HandshakeCalculator {
+public class HandshakeCalculator {
+
+    public static int calculateHandshakes(int n) { 
+        return (n * (n - 1)) / 2;
+    }
+
     public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
 
-        // Taking user input
-        System.out.print("Enter the number of students: ");
-        int numberOfStudents = input.nextInt();
+        System.out.print("Enter the number of students: "); 
+        int n = scanner.nextInt();
 
-        // Handshake formula: n * (n - 1) / 2
-        int maximumHandshakes = (numberOfStudents * (numberOfStudents - 1)) / 2;
+        if (n < 2) {
+            System.out.println("At least two students are required for a handshake.");
+        } else {
+            int maxHandshakes = calculateHandshakes(n);
+            System.out.println("The maximum number of handshakes possible is: " + maxHandshakes);
+        }
 
-        // Displaying the result
-        System.out.println("\n==== Handshake Calculation ====");
-        System.out.println("Number of Students: " + numberOfStudents);
-        System.out.println("Maximum Handshakes: " + maximumHandshakes);
-
-        input.close(); // Closing the scanner
+        scanner.close();
     }
 }
